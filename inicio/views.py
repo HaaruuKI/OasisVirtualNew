@@ -81,3 +81,6 @@ def details_game(request):
     
     contexto = {"name": name_game, "img":img_game,"price":price_game,"desc": description_game, "dlc": lista_zip, "desc_long":description_game_long}
     return render(request, "details_game.html",contexto)
+
+def more_games(request):
+    return render(request, "more_games.html")

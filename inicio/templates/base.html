@@ -7,6 +7,7 @@
     <title>Oasis Virtual</title>
     <link rel="stylesheet" href="{% static 'css/inicio.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/moreGames.css' %}" />
 
     <script src="{% static 'js/tab_section.js' %}"></script>
     <script src="{% static 'js/details.js' %}"></script>
@@ -24,7 +25,7 @@
         <a class="nav-tab" href="{% url 'index' %}#about-us">ACERCA DE NOSOTROS</a>
         <a class="nav-tab" href="{% url 'index' %}#game">JUEGOS</a>
         <a class="nav-tab" href="{% url 'login' %}#iniciar-sesion">INICIAR SESION</a>
-        <a class="nav-tab" href="#tab-typescript">MAS JUEGOS</a>
+        <a class="nav-tab" href="{% url 'moreGames' %}#moregames">MAS JUEGOS</a>
         <a class="nav-tab" href="{% url 'index' %}#contact">CONTACTO</a>
         <span class="nav-tab-slider"></span>
       </div>
