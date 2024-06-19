@@ -13,11 +13,32 @@
   </head>
 
   <body>
-    {% block header %}
+    <section class="nav">
+      <h1 id="home" style="cursor: pointer;">OASIS VIRTUAL</h1>
+      <script>
+        document.querySelector('h1').onclick = sectionNavegate
+      </script>
 
-    {% endblock %}
+      <h3 class="span loader"><span class="m">TU</span><span class="m">ESCAPE</span><span class="m">DE</span><span class="m">LA</span><span class="m">REALIDAD</span></h3>
+      <div class="nav-container">
+        <a class="nav-tab" href="{% url 'index' %}#about-us">ACERCA DE NOSOTROS</a>
+        <a class="nav-tab" href="{% url 'index' %}#game">JUEGOS</a>
+        <a class="nav-tab" href="{% url 'login' %}#iniciar-sesion">INICIAR SESION</a>
+        <a class="nav-tab" href="#tab-typescript">MAS JUEGOS</a>
+        <a class="nav-tab" href="{% url 'index' %}#contact">CONTACTO</a>
+        <span class="nav-tab-slider"></span>
+      </div>
+    </section>
+
     {% block content %}
 
     {% endblock %}
+    <script>
+      const h1 = document.getElementById('home')
+      
+      h1.addEventListener('click', function () {
+        window.location.href = '{% url "index" %}'
+      })
+    </script>
   </body>
 </html>

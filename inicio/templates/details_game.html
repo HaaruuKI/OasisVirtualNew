@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% block header %}
+{% comment %} {% block header %}
   <section class="nav">
-    <h1>OASIS VIRTUAL</h1>
+    <h1 id="home">OASIS VIRTUAL</h1>
 
     <h3 class="span loader"><span class="m">TU</span><span class="m">ESCAPE</span><span class="m">DE</span><span class="m">LA</span><span class="m">REALIDAD</span></h3>
     <div class="nav-container">
@@ -13,7 +13,7 @@
       <span class="nav-tab-slider"></span>
     </div>
   </section>
-{% endblock %}
+{% endblock %} {% endcomment %}
 
 {% block content %}
   <section id="game" class="#1e1f26">
@@ -151,7 +151,9 @@
             </div>
           </div>
 
-          <div id="desc" style="display: none; color: white;">{{ desc_long|safe }}</div>
+          <div id="desc" class="contenedor" style="display: none">
+            <p class="descripcion">{{ desc_long|safe }}</p>
+          </div>
         </div>
       </div>
     </div>

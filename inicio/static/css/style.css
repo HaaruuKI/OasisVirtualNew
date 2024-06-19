@@ -544,3 +544,22 @@ a {
         padding-bottom: 4rem;
     }
 }
+
+.contenedor {
+    /* width: 80%; */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    color: white;
+
+    h1 {
+        color: white;
+        font-weight: bold;
+        padding: 20px;
+    }
+}
+
+.descripcion {
+    text-align: justify;
+    line-height: 1.5;
+}
