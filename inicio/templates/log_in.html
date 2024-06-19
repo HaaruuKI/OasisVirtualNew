@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>INICIAR SESION</h1>
+  <script>
+    document.querySelector('h1').onclick = sectionNavegate
+  </script>
+
+  <h3 class="span loader"><span class="m">TU</span><span class="m">ESCAPE</span><span class="m">DE</span><span class="m">LA</span><span class="m">REALIDAD</span></h3>
+  <div class="nav-container">
+    <a class="nav-tab" href="#tab-svelte">ACERCA DE NOSOTROS</a><a class="nav-tab" href="#tab-esbuild">JUEGOS</a>
+    <a class="nav-tab" href="{% url 'login' %}">INICIAR SESION</a>
+    <a class="nav-tab" href="#tab-typescript">MAS JUEGOS</a>
+    <a class="nav-tab" href="#tab-vite">CONTACTO</a>
+    <span class="nav-tab-slider"></span>
+  </div>
+{% endblock %}
+{% block content %}
+  <section class="slider" id="tab-iniciar">
+    <h1>Iniciar Sesion</h1>
+    <div class="lb">
+      <label for="">Correo:</label>
+      <input type="text" />
+    </div>
+    <label for="">Contraseña:</label>
+    <input type="text" />
+  </section>
+{% endblock %}

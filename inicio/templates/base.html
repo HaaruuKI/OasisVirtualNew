@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Oasis Virtual</title>
+    <link rel="stylesheet" href="{% static 'css/inicio.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <script src="{% static 'js/tab_section.js' %}"></script>
+    <script src="{% static 'js/details.js' %}"></script>
+  </head>
+
+  <body>
+    {% block header %}
+
+    {% endblock %}
+    {% block content %}
+
+    {% endblock %}
+  </body>
+</html>

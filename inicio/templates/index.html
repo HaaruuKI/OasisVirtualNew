@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <section class="nav">
+    <h1>OASIS VIRTUAL</h1>
+
+    <h3 class="span loader"><span class="m">TU</span><span class="m">ESCAPE</span><span class="m">DE</span><span class="m">LA</span><span class="m">REALIDAD</span></h3>
+    <div class="nav-container">
+      <a class="nav-tab" href="#about_us">ACERCA DE NOSOTROS</a>
+      <a class="nav-tab" href="#game">JUEGOS</a>
+      <a class="nav-tab" href="{% url 'login' %}">INICIAR SESION</a>
+      <a class="nav-tab" href="#more_games">MAS JUEGOS</a>
+      <a class="nav-tab" href="#contact">CONTACTO</a>
+      <span class="nav-tab-slider"></span>
+    </div>
+  </section>
+{% endblock %}
+
+{% block content %}
+  <section class="slider" id="about_us">
+    <h1>ACERCA DE NOSOTROS</h1>
+    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt doloribus consequuntur ut magnam, modi asperiores vitae nesciunt veniam quam temporibus expedita molestias voluptas ipsam deserunt cum minus enim dolore fuga.</h2>
+  </section>
+  <section class="slider" id="game">
+    <h1>JUEGOS</h1>
+
+    <div class="grid-container">
+      {% for steamid, img in listas %}
+        <div class="grid-item">
+          <form action="{% url 'details' %}#game" method="POST">
+            {% csrf_token %}
+            <button class="button-juego" type="submit"><img src="{{ img }}" alt="" /></button>
+            <input type="hidden" name="steamid" value="{{ steamid }}" />
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+  <section class="slider" id="tab-next">
+    <h1>NEXT.JS</h1>
+    <h2>framework for Production</h2>
+  </section>
+  <section class="slider" id="more_games">
+    <h1>TYPESCRIPT</h1>
+    <h2>giving you better tooling at any scale</h2>
+  </section>
+  <section class="slider" id="contact">
+    <h1>VITE</h1>
+    <h2>a frontend build tool</h2>
+  </section>
+{% endblock %}
