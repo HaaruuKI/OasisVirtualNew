@@ -546,11 +546,17 @@ a {
 }
 
 .contenedor {
-    /* width: 80%; */
     margin: 0 auto;
     padding: 20px;
-    /* border: 1px solid #ccc; */
     color: white;
+
+    a {
+        color: #1a0dab
+    }
+
+    strong {
+        color: white;
+    }
 
     h1 {
         color: white;

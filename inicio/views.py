@@ -2,9 +2,10 @@ from django.shortcuts import render,redirect
 import os
 from steam_web_api import Steam
 
+KEY = os.environ.get("STEAM_API_KEY")
+
 # Create your views here.
 def index (request):
-    KEY = os.environ.get("STEAM_API_KEY")
 
     list_steam_id = [1245620,570,1151340,2519060,495420,1509960]
     steam = Steam(KEY)
@@ -37,7 +38,6 @@ def details_game(request):
     if request.method == 'POST':
         steam_id = request.POST['steamid']
     
-    KEY = os.environ.get("STEAM_API_KEY")
     steam = Steam(KEY)
 
     game_search = steam.apps.search_games(str(steam_id))
@@ -49,48 +49,19 @@ def details_game(request):
     img_game = game_rec["header_image"]
     description_game = game_rec["short_description"]
     description_game_long = game_rec["detailed_description"]
+    
 
-    if "pc_requirements" in game[str(steam_id)]["data"]:
-        if "minimum"  in  game_rec["pc_requirements"]:
-            pc_requirement_minimum = game_rec["pc_requirements"]["minimum"]
-        else:
-            pc_requirement_minimum = "No disponible"
-        if "recommended"  in  game_rec["pc_requirements"]:
-            pc_requirement_recommended = game_rec["pc_requirements"]["recommended"]
-        else:
-            pc_requirement_recommended = "No disponible"
-    else:
-        pc_requirement_minimum = "No disponible"
-        pc_requirement_recommended = "No disponible"
+    pc_requirements = game_rec.get("pc_requirements", {})
+    mac_requirements = game_rec.get("mac_requirements", {})
+    linux_requirements = game_rec.get("linux_requirements", {})
 
-    if "mac_requirements" in game[str(steam_id)]["data"]:
-        if "mac_requiremets" in game[str(steam_id)]["data"]:
-            mac_requirement_minimum = game_rec["linux_requirements"]["minimum"]
-        else:
-            mac_requirement_minimum = "No disponible"        
-        if "recommended"  in  game_rec["mac_requirements"]:
-            mac_requirement_recommended = game_rec["mac_requirements"]["recommended"]
-        else:
-            mac_requirement_recommended = "No disponible"
-    else:
-        mac_requirement_minimum = "No disponible"
-        mac_requirement_recommended = "No disponible"
-
-    if "linux_requiremets" in game[str(steam_id)]["data"]:
-        if "linux_requiremets" in game[str(steam_id)]["data"]:
-            linux_requirement_minimum = game_rec["linux_requirements"]["minimum"]
-        else:
-            linux_requirement_minimum = "No disponible"
-        if "recommended" in  game_rec["linux_requirements"]:
-            linux_requirement_recommended = game_rec["linux_requirements"]["recommended"]
-        else:
-            linux_requirement_recommended = "No disponible"
-    else:
-        linux_requirement_recommended = "No disponible"
-        linux_requirement_minimum = "No disponible"
-
-
-
+    pc_requirement_minimum = pc_requirements.get("minimum", "No disponible")
+    pc_requirement_recommended = pc_requirements.get("recommended", "No disponible")
+    mac_requirement_minimum = mac_requirements.get("minimum", "No disponible")
+    mac_requirement_recommended = mac_requirements.get("recommended", "No disponible")
+    linux_requirement_minimum = linux_requirements.get("minimum", "No disponible")
+    linux_requirement_recommended = linux_requirements.get("recommended", "No disponible")
+    
     if "dlc" in game[str(steam_id)]["data"]:
         dlc_game = game[str(steam_id)]["data"]["dlc"]
         name_dlc_list = []
@@ -116,7 +87,6 @@ def details_game(request):
             print("Error al obtener DLC",e)
     else:                                                                                                                                                                                     
         lista_zip = ""
-        print ("La palabra no se encuentra")
     
     contexto = {"name": name_game, "img":img_game,"price":price_game,"desc": description_game, "dlc": lista_zip, "desc_long":description_game_long,"pc_minimum":pc_requirement_minimum,"pc_recommended":pc_requirement_recommended,"mac_minimum":mac_requirement_minimum,"mac_recommended":mac_requirement_recommended,"linux_minimum":linux_requirement_minimum,"linux_recommended":linux_requirement_recommended }
     return render(request, "details_game.html",contexto)
