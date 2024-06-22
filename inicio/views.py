@@ -50,6 +50,46 @@ def details_game(request):
     description_game = game_rec["short_description"]
     description_game_long = game_rec["detailed_description"]
 
+    if "pc_requirements" in game[str(steam_id)]["data"]:
+        if "minimum"  in  game_rec["pc_requirements"]:
+            pc_requirement_minimum = game_rec["pc_requirements"]["minimum"]
+        else:
+            pc_requirement_minimum = "No disponible"
+        if "recommended"  in  game_rec["pc_requirements"]:
+            pc_requirement_recommended = game_rec["pc_requirements"]["recommended"]
+        else:
+            pc_requirement_recommended = "No disponible"
+    else:
+        pc_requirement_minimum = "No disponible"
+        pc_requirement_recommended = "No disponible"
+
+    if "mac_requirements" in game[str(steam_id)]["data"]:
+        if "mac_requiremets" in game[str(steam_id)]["data"]:
+            mac_requirement_minimum = game_rec["linux_requirements"]["minimum"]
+        else:
+            mac_requirement_minimum = "No disponible"        
+        if "recommended"  in  game_rec["mac_requirements"]:
+            mac_requirement_recommended = game_rec["mac_requirements"]["recommended"]
+        else:
+            mac_requirement_recommended = "No disponible"
+    else:
+        mac_requirement_minimum = "No disponible"
+        mac_requirement_recommended = "No disponible"
+
+    if "linux_requiremets" in game[str(steam_id)]["data"]:
+        if "linux_requiremets" in game[str(steam_id)]["data"]:
+            linux_requirement_minimum = game_rec["linux_requirements"]["minimum"]
+        else:
+            linux_requirement_minimum = "No disponible"
+        if "recommended" in  game_rec["linux_requirements"]:
+            linux_requirement_recommended = game_rec["linux_requirements"]["recommended"]
+        else:
+            linux_requirement_recommended = "No disponible"
+    else:
+        linux_requirement_recommended = "No disponible"
+        linux_requirement_minimum = "No disponible"
+
+
 
     if "dlc" in game[str(steam_id)]["data"]:
         dlc_game = game[str(steam_id)]["data"]["dlc"]
@@ -74,12 +114,11 @@ def details_game(request):
                 print("No hay dlc")
         except Exception as e:
             print("Error al obtener DLC",e)
-        # print ("si exite")
     else:                                                                                                                                                                                     
         lista_zip = ""
         print ("La palabra no se encuentra")
     
-    contexto = {"name": name_game, "img":img_game,"price":price_game,"desc": description_game, "dlc": lista_zip, "desc_long":description_game_long}
+    contexto = {"name": name_game, "img":img_game,"price":price_game,"desc": description_game, "dlc": lista_zip, "desc_long":description_game_long,"pc_minimum":pc_requirement_minimum,"pc_recommended":pc_requirement_recommended,"mac_minimum":mac_requirement_minimum,"mac_recommended":mac_requirement_recommended,"linux_minimum":linux_requirement_minimum,"linux_recommended":linux_requirement_recommended }
     return render(request, "details_game.html",contexto)
 
 def more_games(request):

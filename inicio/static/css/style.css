@@ -549,7 +549,7 @@ a {
     /* width: 80%; */
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     color: white;
 
     h1 {
@@ -562,4 +562,8 @@ a {
 .descripcion {
     text-align: justify;
     line-height: 1.5;
+}
+
+.requirement {
+    color: white;
 }

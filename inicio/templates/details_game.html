@@ -1,19 +1,4 @@
 {% extends 'base.html' %}
-{% comment %} {% block header %}
-  <section class="nav">
-    <h1 id="home">OASIS VIRTUAL</h1>
-
-    <h3 class="span loader"><span class="m">TU</span><span class="m">ESCAPE</span><span class="m">DE</span><span class="m">LA</span><span class="m">REALIDAD</span></h3>
-    <div class="nav-container">
-      <a class="nav-tab" href="#about_us">ACERCA DE NOSOTROS</a>
-      <a class="nav-tab" href="#game">JUEGOS</a>
-      <a class="nav-tab" href="{% url 'login' %}">INICIAR SESION</a>
-      <a class="nav-tab" href="#more_games">MAS JUEGOS</a>
-      <a class="nav-tab" href="#contact">CONTACTO</a>
-      <span class="nav-tab-slider"></span>
-    </div>
-  </section>
-{% endblock %} {% endcomment %}
 
 {% block content %}
   <section id="game" class="#1e1f26">
@@ -116,11 +101,8 @@
             <div id="list" class="no-scrollbar" data-active-index="0">
               <div class="list-options">
                 <button class="list-option" type="button" onclick="dlc()">DLC</button>
-
                 <button class="list-option" type="button" onclick="description()">DESCRIPTION</button>
-
-                <button class="list-option" type="button" onclick="Showhide()">TOP</button>
-
+                <button class="list-option" type="button" onclick="requirements()">REQUIREMENTS</button>
                 <button class="list-option" type="button" onclick="Showhide()">UPCOMING</button>
               </div>
               <div class="list-items"></div>
@@ -153,6 +135,42 @@
 
           <div id="desc" class="contenedor" style="display: none">
             <p class="descripcion">{{ desc_long|safe }}</p>
+          </div>
+          <div id="requirements" class="contenedor" style="display:none">
+            <div id="list" class="no-scrollbar">
+              <div class="list-options">
+                <button class="list-option" type="button" onclick="pc()">PC</button>
+                <button class="list-option" type="button" onclick="mac()">MAC</button>
+                <button class="list-option" type="button" onclick="linux()">LINUX</button>
+              </div>
+
+              {% if pc_minimum != 'No disponible' %}
+                <div id="pc" style="display: ">
+                  <p>Requirement PC</p>
+                  <p>{{ pc_minimum|safe }}</p>
+                  <br />
+                  <p>{{ pc_recommended|safe }}</p>
+                </div>
+              {% endif %}
+
+              {% if mac_minimum != 'No disponible' %}
+                <div id="mac" style="display: none">
+                  <p>Requirement MAC</p>
+                  <p>{{ mac_minimum|safe }}</p>
+                  <br />
+                  <p>{{ mac_recommended|safe }}</p>
+                </div>
+              {% endif %}
+
+              {% if linux_minimum != 'No disponible' %}
+                <div id="linux" style="display: none">
+                  <p>Requirement LINUX</p>
+                  <p>{{ linux_minimum|safe }}</p>
+                  <br />
+                  <p>{{ linux_recommended|safe }}</p>
+                </div>
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
