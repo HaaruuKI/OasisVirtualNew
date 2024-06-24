@@ -1,16 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
-  <div class="skew">
-    <div class="content-area top-left">
-      <h1>Two Photos</h1>
-      <h2>Brooklyn Street at Night</h2>
-      <p>I walked home from the grocery store one night and suddenly felt like I was in a new place. The puddle and the lights and the mostly empty street with metal fences on the left created a scene that I had never before seen despite this being the 100th or more time that I had walked this route.</p>
-    </div>
-    <div class="bg-image top-right"></div>
-    <div class="bg-image bottom-left"></div>
-    <div class="content-area bottom-right">
-      <h2>Parking Garage</h2>
-      <p>A romantic walk on the (seemingly) deserted Roosevelt Island in the East River, led us to this empty parking garage entrance. Steam emanated from a nearby vent creating a moody atmosphere.</p>
-    </div>
-  </div>
+  <section class="" id="moregames">
+    <br />
+    <br />
+    <form class="form" accept="#moregames" method="get">
+      <input class="input" type="text" name="q" placeholder="Search for games..." required />
+      <button class="button" type="submit">Search</button>
+    </form>
+    {% if lista != '' %}
+      <ul class="ul">
+        {% for name, img in lista %}
+          <div class="div">
+            <a href="#">
+              <li class="li">
+                <h2 style="color: white;">{{ name }}</h2>
+                <img clas="img" src="{{ img }}" alt="{{ name }}" />
+                {% comment %} <p>Developer: game.developer</p>
+                <p>Publisher: game.publisher</p>
+                <p>Release Date: game.release_date</p>
+                <p>Genre: game.genre</p>
+                <p>Platforms: game.platforms</p>
+                <p>Price: game.price</p> {% endcomment %}
+              </li>
+            </a>
+          </div>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p style="color: white;">No se encontro ningun juego.</p>
+    {% endif %}
+  </section>
 {% endblock %}

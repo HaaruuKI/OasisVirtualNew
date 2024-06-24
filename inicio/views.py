@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 import os
 from steam_web_api import Steam
+from .models import Game
 
 KEY = os.environ.get("STEAM_API_KEY")
 
@@ -49,6 +50,7 @@ def details_game(request):
     img_game = game_rec["header_image"]
     description_game = game_rec["short_description"]
     description_game_long = game_rec["detailed_description"]
+    lenguages = game_rec.get("supported_languages", "No disponible")
     
 
     pc_requirements = game_rec.get("pc_requirements", {})
@@ -88,8 +90,28 @@ def details_game(request):
     else:                                                                                                                                                                                     
         lista_zip = ""
     
-    contexto = {"name": name_game, "img":img_game,"price":price_game,"desc": description_game, "dlc": lista_zip, "desc_long":description_game_long,"pc_minimum":pc_requirement_minimum,"pc_recommended":pc_requirement_recommended,"mac_minimum":mac_requirement_minimum,"mac_recommended":mac_requirement_recommended,"linux_minimum":linux_requirement_minimum,"linux_recommended":linux_requirement_recommended }
+    contexto = {"name": name_game, "img":img_game,"price":price_game,"desc": description_game, "dlc": lista_zip, "desc_long":description_game_long,"pc_minimum":pc_requirement_minimum,"pc_recommended":pc_requirement_recommended,"mac_minimum":mac_requirement_minimum,"mac_recommended":mac_requirement_recommended,"linux_minimum":linux_requirement_minimum,"linux_recommended":linux_requirement_recommended, "lenguage": lenguages}
     return render(request, "details_game.html",contexto)
 
 def more_games(request):
-    return render(request, "more_games.html")
+    steam = Steam(KEY)
+    query = request.GET.get('q')
+    print(query)
+
+    steam_app = steam.apps.search_games(str(query))
+    steam_app_list = steam_app["apps"]
+
+    name_game_list = []
+    img_game_list = []
+    for i in range(len(steam_app_list)):
+        list_id = steam_app["apps"][i]
+        # id_game = list_id["id"]
+        name_game = list_id["name"]
+        img_game = list_id["img"]  
+
+        name_game_list.append(name_game)
+        img_game_list.append(img_game)
+
+    contexto = {"lista": zip(name_game_list,img_game_list)}
+    return render(request, "more_games.html", contexto)
+
