@@ -5,13 +5,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>Oasis Virtual</title>
-    <link rel="stylesheet" href="{% static 'css/inicio.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/more_games.css' %}" />
-
-    <script src="{% static 'js/tab_section.js' %}"></script>
-    <script src="{% static 'js/details.js' %}"></script>
-    <script src="{% static 'js/more_games.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}" />
   </head>
 
   <body>
@@ -25,9 +22,9 @@
       <div class="nav-container">
         <a class="nav-tab" href="{% url 'index' %}#about-us">ACERCA DE NOSOTROS</a>
         <a class="nav-tab" href="{% url 'index' %}#game">JUEGOS</a>
-        <a class="nav-tab" href="{% url 'login' %}#iniciar-sesion">INICIAR SESION</a>
-        <a class="nav-tab" href="{% url 'moreGames' %}#moregames">MAS JUEGOS</a>
-        <a class="nav-tab" href="{% url 'index' %}#contact">CONTACTO</a>
+        <a class="nav-tab" href="{% url 'more_games' %}#moregames">MAS JUEGOS</a>
+        <a class="nav-tab" href="{% url 'register' %}#register">REGISTRARSE</a>
+        <a class="nav-tab" href="{% url 'log_in' %}#iniciar-sesion">INICIAR SESION</a>
         <span class="nav-tab-slider"></span>
       </div>
     </section>
@@ -35,6 +32,11 @@
     {% block content %}
 
     {% endblock %}
+    <script src="{% static 'js/tab_section.js' %}"></script>
+    <script src="{% static 'js/details.js' %}"></script>
+    <script src="{% static 'js/more_games.js' %}"></script>
+    <script src="{% static 'js/contact-index.js' %}"></script>
+
     <script>
       const h1 = document.getElementById('home')
       

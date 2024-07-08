@@ -267,25 +267,3 @@ a {
 .loader span:nth-child(22) {
     -webkit-animation-delay: 2.1s;
 }
-
-.redes-sociales {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.redes-sociales a {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-.redes-sociales img {
-    width: 30px;
-    height: 30px;
-}
-
-.color-a {
-    color: white;
-    /* position: absolute */
-}

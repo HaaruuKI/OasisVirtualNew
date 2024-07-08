@@ -4,8 +4,10 @@ cachetools==5.3.3
 certifi==2024.6.2
 charset-normalizer==3.3.2
 Django==5.0.6
+gunicorn==22.0.0
 idna==3.7
 Markdown==3.6
+packaging==24.1
 pillow==10.3.0
 pycryptodomex==3.20.0
 python-steam-api==2.0.2
