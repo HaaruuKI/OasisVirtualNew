@@ -24,8 +24,12 @@
         <a class="nav-tab" href="{% url 'index' %}#about-us">ACERCA DE NOSOTROS</a>
         <a class="nav-tab" href="{% url 'index' %}#game">JUEGOS</a>
         <a class="nav-tab" href="{% url 'more_games' %}#moregames">MAS JUEGOS</a>
-        <a class="nav-tab" href="{% url 'register' %}#register">REGISTRARSE</a>
-        <a class="nav-tab" href="{% url 'log_in' %}#login">INICIAR SESION</a>
+        {% if log != 1 %}
+          <a class="nav-tab" href="{% url 'register' %}#register">REGISTRARSE</a>
+          <a class="nav-tab" href="{% url 'log_in' %}#login">INICIAR SESION</a>
+        {% else %}
+          <a class="nav-tab" href="{% url 'close_sesion' %}">SALIR</a>
+        {% endif %}
         <span class="nav-tab-slider"></span>
       </div>
     </section>

@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 import os
 from steam_web_api import Steam # type: ignore
 

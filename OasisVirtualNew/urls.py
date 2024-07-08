@@ -8,5 +8,6 @@ urlpatterns = [
     path('', include('more_games.urls')),
     path('', include('login.urls')),
     path('', include('register.urls')),
-    
+    path('', include('globales.urls')),
+    path('accounts/', include('django.contrib.auth.urls'))   
 ]

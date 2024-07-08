@@ -1,15 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 import os 
 from steam_web_api import Steam # type: ignore
+from django.contrib.auth.decorators import login_required
 
 KEY = os.environ.get("STEAM_API_KEY")
 
-# Create your views here.
-def detailsGames(request):
-    if request.method == 'POST':
-        steam_id = request.POST['steamid']
-    
+
+
+@login_required
+def detailsGames(request, steam_id):    
     steam = Steam(KEY)
+    log = 1
 
     game_search = steam.apps.search_games(str(steam_id))
     price_game = game_search["apps"][0]["price"]
@@ -60,5 +61,6 @@ def detailsGames(request):
     else:                                                                                                                                                                                     
         lista_zip = ""
     
-    contexto = {"name": name_game, "img":img_game,"price":price_game,"desc": description_game, "dlc": lista_zip, "desc_long":description_game_long,"pc_minimum":pc_requirement_minimum,"pc_recommended":pc_requirement_recommended,"mac_minimum":mac_requirement_minimum,"mac_recommended":mac_requirement_recommended,"linux_minimum":linux_requirement_minimum,"linux_recommended":linux_requirement_recommended, "lenguage": lenguages}
+    contexto = {"name": name_game, "img":img_game,"price":price_game,"desc": description_game, "dlc": lista_zip, "desc_long":description_game_long,"pc_minimum":pc_requirement_minimum,"pc_recommended":pc_requirement_recommended,"mac_minimum":mac_requirement_minimum,"mac_recommended":mac_requirement_recommended,"linux_minimum":linux_requirement_minimum,"linux_recommended":linux_requirement_recommended, "lenguage": lenguages,"log":log}
     return render(request, "details_game.html",contexto)
+

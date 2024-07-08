@@ -12,10 +12,9 @@
     <div class="grid-container">
       {% for steamid, img in listas %}
         <div class="grid-item">
-          <form action="{% url 'details_games' %}#game" method="POST">
+          <form action="{% url 'details_games' steamid %}#game" method="POST">
             {% csrf_token %}
             <button class="button-juego" type="submit"><img src="{{ img }}" alt="" /></button>
-            <input type="hidden" name="steamid" value="{{ steamid }}" />
           </form>
         </div>
       {% endfor %}
