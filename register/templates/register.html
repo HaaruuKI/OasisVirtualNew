@@ -2,29 +2,31 @@
 
 {% block content %}
   <section id="register">
-    <div class="container">
-      <div class="login-form">
-        <h2 class="h2">Iniciar sesión</h2>
+    <div class="container-register">
+      <div class="login-form-register">
+        <h2 class="h2">Registrarse</h2>
         <form action="#">
-          <div class="input-group">
-            <label class="label" for="email">Correo electronico:</label>
-            <input class="input" type="email" id="email" name="email" required />
+          <div class="input-group-register">
+            <label class="label-register" for="name">Nombre:</label>
+            <input class="input-register" type="text" id="name" name="name" required />
           </div>
-          <div class="input-group">
-            <label class="label" for="password">Contraseña:</label>
-            <input class="input" type="password" id="password" name="password" required />
+          <div class="input-group-register">
+            <label class="label-register" for="email">Correo electronico:</label>
+            <input class="input-register" type="email" id="email" name="email" required />
           </div>
-          <div class="checkbox-group">
-            <input class="input" type="checkbox" id="remember-me" name="remember-me" />
-            <label class="label" for="remember-me">Mostrar contraseña</label>
+
+          <div class="input-group-register">
+            <label class="label-register" for="password">Contraseña:</label>
+            <input class="input-register" type="password" id="password" name="password" required />
           </div>
-          <button class="button" type="submit">Sign in</button>
+          <div class="checkbox-group-register">
+            <input class="input-register" type="checkbox" id="remember-me" name="remember-me" />
+            <label class="label-register" for="remember-me">Mostrar contraseña</label>
+          </div>
+          <button class="button-register" type="submit">Registrarse</button>
         </form>
-        <p>
-          <a class="a" href="#">Olvidaste tu contraseña?</a>
-        </p>
-        <p class="p">
-          ¿No tienes una cuenta? <a class="a" href="#">Registrarse</a>
+        <p class="p-register">
+          ¿Ya tienes una cuenta? <a class="a-register" href="{% url 'log_in' %}#login">Iniciar sesión</a>
         </p>
       </div>
     </div>

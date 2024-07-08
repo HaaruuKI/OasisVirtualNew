@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/more_games.css' %}" />
     <link rel="stylesheet" href="{% static 'css/register.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
   </head>
 
   <body>
@@ -24,7 +25,7 @@
         <a class="nav-tab" href="{% url 'index' %}#game">JUEGOS</a>
         <a class="nav-tab" href="{% url 'more_games' %}#moregames">MAS JUEGOS</a>
         <a class="nav-tab" href="{% url 'register' %}#register">REGISTRARSE</a>
-        <a class="nav-tab" href="{% url 'log_in' %}#iniciar-sesion">INICIAR SESION</a>
+        <a class="nav-tab" href="{% url 'log_in' %}#login">INICIAR SESION</a>
         <span class="nav-tab-slider"></span>
       </div>
     </section>
@@ -35,8 +36,7 @@
     <script src="{% static 'js/tab_section.js' %}"></script>
     <script src="{% static 'js/details.js' %}"></script>
     <script src="{% static 'js/more_games.js' %}"></script>
-    <script src="{% static 'js/contact-index.js' %}"></script>
-
+    <script src="{% static 'js/function.js' %}"></script>
     <script>
       const h1 = document.getElementById('home')
       

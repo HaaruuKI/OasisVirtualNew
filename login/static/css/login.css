@@ -1,36 +1,36 @@
-.container-register {
+.container-login {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.login-form-register {
+.login-form-login {
     background-color: #1a1b23;
     padding: 100px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.h2-register {
+.h2-login {
     color: white;
     text-align: center;
     margin-bottom: 20px;
 }
 
-.input-group-register {
+.input-group-login {
     margin-bottom: 15px;
 }
 
-.label-register {
+.label-login {
     color: white;
     display: block;
     margin-bottom: 5px;
 }
 
-.input-register[type="email"],
-.input-register[type="text"],
-.input-register[type="password"] {
+.input-login[type="email"],
+.input-login[type="text"],
+.input-login[type="password"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -38,21 +38,21 @@
     box-sizing: border-box;
 }
 
-.checkbox-group-register {
+.checkbox-group-login {
     margin-bottom: 20px;
 }
 
-.input-register[type="checkbox"] {
+.input-login[type="checkbox"] {
     vertical-align: middle;
 }
 
-.label-register[for="remember-me"] {
+.label-login[for="remember-me"] {
     color: white;
     display: inline-block;
     margin-left: 5px;
 }
 
-.button-register[type="submit"] {
+.button-login[type="submit"] {
     background-color: #03dac6;
     color: black;
     padding: 10px 20px;
@@ -61,15 +61,15 @@
     cursor: pointer;
 }
 
-.button-register[type="submit"]:hover {
+.button-login[type="submit"]:hover {
     background-color: #03dac6;
 }
 
-.a-register {
+.a-login {
     color: #03dac6;
     text-decoration: none;
 }
 
-.p-register {
+.p-login {
     color: white;
 }
